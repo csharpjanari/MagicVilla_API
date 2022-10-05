@@ -1,3 +1,8 @@
+global using MagicVilla_VillaAPI.Models;
+global using MagicVilla_VillaAPI.Models.Dto;
+global using Microsoft.AspNetCore.Mvc;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
