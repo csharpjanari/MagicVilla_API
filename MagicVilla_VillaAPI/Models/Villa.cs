@@ -1,4 +1,6 @@
-﻿namespace MagicVilla_VillaAPI.Models
+﻿
+
+namespace MagicVilla_VillaAPI.Models
 {
     public class Villa
     {

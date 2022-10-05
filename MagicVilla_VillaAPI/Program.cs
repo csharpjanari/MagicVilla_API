@@ -1,6 +1,7 @@
 global using MagicVilla_VillaAPI.Models;
 global using MagicVilla_VillaAPI.Models.Dto;
 global using Microsoft.AspNetCore.Mvc;
+global using MagicVilla_VillaAPI.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
