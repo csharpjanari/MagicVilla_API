@@ -4,6 +4,8 @@ global using Microsoft.AspNetCore.Mvc;
 global using MagicVilla_VillaAPI.Data;
 global using System.ComponentModel.DataAnnotations;
 global using Microsoft.AspNetCore.JsonPatch;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
