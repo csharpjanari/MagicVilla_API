@@ -7,10 +7,11 @@ global using Microsoft.AspNetCore.JsonPatch;
 global using System.ComponentModel.DataAnnotations.Schema;
 global using Microsoft.EntityFrameworkCore;
 global using AutoMapper;
-global using MagicVilla_VillaAPI;
+global using MagicVilla_VillaAPI;   
 global using System.Linq.Expressions;
 global using MagicVilla_VillaAPI.Repository.IRepository;
 global using MagicVilla_VillaAPI.Repository;
+global using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
