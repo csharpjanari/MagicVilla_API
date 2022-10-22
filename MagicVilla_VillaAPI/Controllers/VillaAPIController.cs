@@ -188,7 +188,6 @@ namespace MagicVilla_VillaAPI.Controllers
                 await _dbVilla.UpdateAsync(model);
 
                 _response.StatusCode = HttpStatusCode.NoContent;
-                _response.IsSuccess = true;
 
                 return Ok(_response);
             }
