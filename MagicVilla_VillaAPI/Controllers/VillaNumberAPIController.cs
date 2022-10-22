@@ -42,5 +42,47 @@ namespace MagicVilla_VillaAPI.Controllers
             }
             return _response;   
         }
+
+
+
+        [HttpGet("{villaNo:int}", Name = "GetVillaNumber")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<APIResponse>> GetVillaNumber(int villaNo)
+        {
+            try
+            {
+                if(villaNo == 0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
+
+                    return BadRequest(_response);
+                }
+
+                var villa = await _dbVilla.GetAsync(x => x.VillaNo == villaNo);
+
+                if(villa == null)
+                {
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    _response.IsSuccess = false;
+
+                    return NotFound(_response);
+                }
+
+                _response.Result = _mapper.Map<VillaNumberDTO>(villa);
+                _response.StatusCode = HttpStatusCode.OK;
+
+                return Ok(_response);
+            }
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Result
+                    = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
     }
 }
