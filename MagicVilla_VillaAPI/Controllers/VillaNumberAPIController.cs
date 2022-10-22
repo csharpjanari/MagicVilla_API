@@ -121,5 +121,48 @@ namespace MagicVilla_VillaAPI.Controllers
             }
             return _response;
         }
+
+
+
+        [HttpDelete("{villaNo:int}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<APIResponse>> DeleteVillaNumber(int villaNo)
+        {
+            try
+            {
+                if (villaNo == 0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
+
+                    return BadRequest(_response);
+                }
+
+                var villa = await _dbVilla.GetAsync(x => x.VillaNo == villaNo);
+
+                if (villa == null)
+                {
+                    _response.StatusCode = HttpStatusCode.NotFound;
+                    _response.IsSuccess = false;
+
+                    return NotFound(_response);
+                }
+                    
+                await _dbVilla.RemoveAsync(villa);
+
+                _response.StatusCode = HttpStatusCode.NoContent;
+
+                return Ok(_response);
+            }
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Result
+                    = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
     }
 }
