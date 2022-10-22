@@ -84,5 +84,42 @@ namespace MagicVilla_VillaAPI.Controllers
             }
             return _response;
         }
+
+
+
+        [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<APIResponse>> CreateVillaNumber([FromBody] VillaNumberCreateDTO createDTO)
+        {
+            try
+            {
+                if(createDTO == null)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
+
+                    return BadRequest(_response);
+                }
+
+                VillaNumber villaNumber = _mapper.Map<VillaNumber>(createDTO);
+
+                await _dbVilla.CreateAsync(villaNumber);
+
+                _response.Result = _mapper.Map<VillaNumberDTO>(villaNumber);
+                _response.StatusCode = HttpStatusCode.Created;
+
+                return CreatedAtRoute("GetVillaNumber", new { villaNo = villaNumber.VillaNo }, _response);
+            }
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Result
+                    = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
     }
 }
