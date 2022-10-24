@@ -1,11 +1,14 @@
 global using System.ComponentModel.DataAnnotations;
 global using static MagicVilla_Utility.SD;
-
+global using AutoMapper;
+global using MagicVilla_Web.Models.Dto;
+global using MagicVilla_Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 var app = builder.Build();
 
