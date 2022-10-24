@@ -1,3 +1,7 @@
+global using System.ComponentModel.DataAnnotations;
+global using static MagicVilla_Utility.SD;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
