@@ -3,6 +3,11 @@ global using static MagicVilla_Utility.SD;
 global using AutoMapper;
 global using MagicVilla_Web.Models.Dto;
 global using MagicVilla_Web;
+global using MagicVilla_Web.Models;
+global using MagicVilla_Web.Services.IServices;
+global using Newtonsoft.Json;
+global using System.Text;
+global using MagicVilla_Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
