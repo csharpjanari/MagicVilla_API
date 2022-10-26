@@ -8,12 +8,16 @@ global using MagicVilla_Web.Services.IServices;
 global using Newtonsoft.Json;
 global using System.Text;
 global using MagicVilla_Utility;
+global using MagicVilla_Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+builder.Services.AddHttpClient<IVillaService, VillaService>();
+builder.Services.AddScoped<IVillaService, VillaService>();
 
 var app = builder.Build();
 
