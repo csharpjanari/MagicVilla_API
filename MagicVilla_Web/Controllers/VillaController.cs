@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace MagicVilla_Web.Controllers
 {
     public class VillaController : Controller
@@ -13,6 +15,8 @@ namespace MagicVilla_Web.Controllers
             _mapper = mapper;
         }
 
+
+
         public async Task<IActionResult> IndexVilla()
         {
             List<VillaDTO> list = new();
@@ -25,6 +29,32 @@ namespace MagicVilla_Web.Controllers
             }
 
             return View(list);
+        }
+
+
+
+        public async Task<IActionResult> CreateVilla()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateVilla(VillaCreateDTO model)
+        {
+            if(ModelState.IsValid)
+            {
+                var response = await _villaService.CreateAsync<APIResponse>(model);
+
+                if (response != null && response.IsSuccess)
+                {
+                    return RedirectToAction(nameof(IndexVilla));
+                }
+            }
+
+            return View(model);
         }
     }
 }
