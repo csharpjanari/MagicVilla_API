@@ -9,6 +9,7 @@ global using Newtonsoft.Json;
 global using System.Text;
 global using MagicVilla_Utility;
 global using MagicVilla_Web.Services;
+global using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
