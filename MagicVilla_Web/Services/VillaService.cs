@@ -44,7 +44,7 @@
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = ApiType.GET,
-                Url = villaUrl + "/api/VillaAPI" + id
+                Url = villaUrl + "/api/VillaAPI/" + id
             });
         }
 
