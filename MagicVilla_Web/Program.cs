@@ -10,6 +10,9 @@ global using System.Text;
 global using MagicVilla_Utility;
 global using MagicVilla_Web.Services;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+global using MagicVilla_Web.Models.VM;
 
 var builder = WebApplication.CreateBuilder(args);
 
