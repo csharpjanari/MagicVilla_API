@@ -1,8 +1,5 @@
 ﻿
 
-using MagicVilla_VillaAPI.Models;
-using System.Security.Cryptography.Xml;
-
 namespace MagicVilla_VillaAPI.Controllers
 {
     [ApiController]
