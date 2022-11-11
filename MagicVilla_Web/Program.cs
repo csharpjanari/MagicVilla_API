@@ -7,7 +7,6 @@ global using MagicVilla_Web.Models;
 global using MagicVilla_Web.Services.IServices;
 global using Newtonsoft.Json;
 global using System.Text;
-global using MagicVilla_Utility;
 global using MagicVilla_Web.Services;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Rendering;
