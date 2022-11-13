@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace MagicVilla_VillaAPI.Controllers
 {
     [ApiController]
@@ -20,6 +22,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(200)]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
@@ -44,6 +47,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpGet("{id:int}", Name = "GetVilla")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -126,6 +130,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(204)]
         [HttpDelete("{id:int}", Name = "DeleteVilla")]
+        [Authorize(Roles = "CUSTOM")]
         public async Task<ActionResult<APIResponse>> DeleteVilla(int id)
         {
             try
