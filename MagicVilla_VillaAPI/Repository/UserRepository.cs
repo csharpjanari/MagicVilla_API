@@ -3,10 +3,12 @@
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _db;
+        private string secretKey;
 
-        public UserRepository(ApplicationDbContext db)
+        public UserRepository(ApplicationDbContext db, IConfiguration configuration)
         {
             _db = db;
+            secretKey = configuration.GetValue<string>("ApiSettings:Secret");
         }
 
         public bool IsUniqueUser(string username)
@@ -21,7 +23,16 @@
 
         public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
         {
-            throw new NotImplementedException();
+            var user = await _db.LocalUsers.FirstOrDefaultAsync(x => 
+                    x.UserName.ToLower() == loginRequestDTO.UserName.ToLower()
+                    && x.Password == loginRequestDTO.Password);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            //if user is found generate JWT Token
         }
 
         public async Task<LocalUser> Register(RegistrationRequestDTO registrationRequestDTO)
