@@ -4,6 +4,6 @@
     {
         bool IsUniqueUser(string username);
         Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO);
-        Task<LocalUser> Register(RegistrationRequestDTO registrationRequestDTO);
+        Task<LocalUser> Register(RegisterationRequestDTO registrationRequestDTO);
     }
 }

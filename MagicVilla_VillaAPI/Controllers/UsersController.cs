@@ -40,7 +40,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegistrationRequestDTO model)
+        public async Task<IActionResult> Register([FromBody] RegisterationRequestDTO model)
         {
             bool ifUserNameUnique = _userRepo.IsUniqueUser(model.UserName);
             if(!ifUserNameUnique)
