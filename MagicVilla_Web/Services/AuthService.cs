@@ -21,7 +21,7 @@
             });
         }
 
-        public Task<T> RegisterAsync<T>(UserDTO obj)
+        public Task<T> RegisterAsync<T>(RegisterationRequestDTO obj)
         {
             return SendAsync<T>(new APIRequest()
             {
