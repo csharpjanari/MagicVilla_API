@@ -12,6 +12,7 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Rendering;
 global using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 global using MagicVilla_Web.Models.VM;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,17 @@ builder.Services.AddHttpClient<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                            .AddCookie(opt =>
+                            {
+                                opt.Cookie.HttpOnly = true;
+                                opt.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                                opt.LoginPath = "/Auth/Login";
+                                opt.AccessDeniedPath = "/Auth/AccessDenied";
+                                opt.SlidingExpiration = true;
+                            });
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(100);
@@ -52,6 +64,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
