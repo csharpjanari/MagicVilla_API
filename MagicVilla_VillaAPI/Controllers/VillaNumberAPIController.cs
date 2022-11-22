@@ -1,5 +1,8 @@
 ﻿
 
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+
 namespace MagicVilla_VillaAPI.Controllers
 {
     [ApiController]
@@ -88,6 +91,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(201)]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
@@ -137,6 +141,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpDelete("{villaNo:int}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -180,6 +185,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpPut("{villaNo:int}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
