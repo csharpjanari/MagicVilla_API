@@ -1,12 +1,11 @@
-﻿
-
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Data;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
     [ApiController]
     [Route("api/VillaNumberAPI")]
+    [ApiVersion("1.0")]
     public class VillaNumberAPIController : ControllerBase
     {
         protected readonly APIResponse _response;
