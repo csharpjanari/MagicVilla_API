@@ -5,7 +5,6 @@ namespace MagicVilla_VillaAPI.Controllers.v1
     [ApiController]
     [Route("api/v{version:apiVersion}/VillaNumberAPI")]
     [ApiVersion("1.0")]
-    [ApiVersion("2.0")]
     public class VillaNumberAPIController : ControllerBase
     {
         protected readonly APIResponse _response;
@@ -24,7 +23,6 @@ namespace MagicVilla_VillaAPI.Controllers.v1
 
 
         [HttpGet]
-        [MapToApiVersion("1.0")]
         [ProducesResponseType(200)]
         public async Task<ActionResult<APIResponse>> GetVillaNumbers()
         {
@@ -44,15 +42,6 @@ namespace MagicVilla_VillaAPI.Controllers.v1
                     = new List<string>() { ex.ToString() };
             }
             return _response;
-        }
-
-
-
-        [MapToApiVersion("2.0")]
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
 

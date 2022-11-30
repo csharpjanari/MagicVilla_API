@@ -3,7 +3,7 @@
 namespace MagicVilla_VillaAPI.Controllers.v2
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/VillaNumberAPI")]
+    [Route("api/v{version:apiVersion}/VillaNumberAPIv2")]
     [ApiVersion("2.0")]
     public class VillaNumberAPIv2Controller : ControllerBase
     {
@@ -22,7 +22,6 @@ namespace MagicVilla_VillaAPI.Controllers.v2
 
 
 
-        [MapToApiVersion("2.0")]
         [HttpGet]
         public IEnumerable<string> Get()
         {
