@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace MagicVilla_VillaAPI.Controllers
+namespace MagicVilla_VillaAPI.Controllers.v1
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/VillaNumberAPI")]
@@ -18,7 +18,7 @@ namespace MagicVilla_VillaAPI.Controllers
             _dbVillaNumber = dbVillaNumber;
             _mapper = mapper;
             _dbVilla = dbVilla;
-            this._response = new();
+            _response = new();
         }
 
 
@@ -37,13 +37,13 @@ namespace MagicVilla_VillaAPI.Controllers
 
                 return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.ErrorMessages
                     = new List<string>() { ex.ToString() };
             }
-            return _response;   
+            return _response;
         }
 
 
@@ -65,7 +65,7 @@ namespace MagicVilla_VillaAPI.Controllers
         {
             try
             {
-                if(villaNo == 0)
+                if (villaNo == 0)
                 {
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.IsSuccess = false;
@@ -75,7 +75,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
                 var villa = await _dbVillaNumber.GetAsync(x => x.VillaNo == villaNo);
 
-                if(villa == null)
+                if (villa == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
                     _response.IsSuccess = false;
@@ -88,7 +88,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
                 return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Result
@@ -109,7 +109,7 @@ namespace MagicVilla_VillaAPI.Controllers
         {
             try
             {
-                if(await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
+                if (await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
                 {
                     ModelState.AddModelError("ErrorMessages", "Villa Number already Exists");
                     return BadRequest(ModelState);
@@ -138,7 +138,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
                 return CreatedAtRoute("GetVillaNumber", new { villaNo = villaNumber.VillaNo }, _response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Result
@@ -175,14 +175,14 @@ namespace MagicVilla_VillaAPI.Controllers
 
                     return NotFound(_response);
                 }
-                    
+
                 await _dbVillaNumber.RemoveAsync(villa);
 
                 _response.StatusCode = HttpStatusCode.NoContent;
 
                 return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Result
@@ -225,7 +225,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
                 return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Result
