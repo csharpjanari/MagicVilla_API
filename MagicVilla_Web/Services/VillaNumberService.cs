@@ -17,7 +17,7 @@
             {
                 ApiType = ApiType.POST,
                 Data = dto,
-                Url = villaUrl + "/api/VillaNumberAPI",
+                Url = villaUrl + "/api/v1/VillaNumberAPI",
                 Token = token
             });
         }
@@ -27,7 +27,7 @@
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = ApiType.DELETE,
-                Url = villaUrl + "/api/VillaNumberAPI/" + id,
+                Url = villaUrl + "/api/v1/VillaNumberAPI/" + id,
                 Token = token
             });
         }
@@ -37,7 +37,7 @@
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = ApiType.GET,
-                Url = villaUrl + "/api/VillaNumberAPI",
+                Url = villaUrl + "/api/v1/VillaNumberAPI",
                 Token = token
             });
         }
@@ -47,7 +47,7 @@
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = ApiType.GET,
-                Url = villaUrl + "/api/VillaNumberAPI/" + id,
+                Url = villaUrl + "/api/v1/VillaNumberAPI/" + id,
                 Token = token
             });
         }
@@ -58,7 +58,7 @@
             {
                 ApiType = ApiType.PUT,
                 Data = dto,
-                Url = villaUrl + "/api/VillaNumberAPI/" + dto.VillaNo,
+                Url = villaUrl + "/api/v1/VillaNumberAPI/" + dto.VillaNo,
                 Token = token
             });
         }
