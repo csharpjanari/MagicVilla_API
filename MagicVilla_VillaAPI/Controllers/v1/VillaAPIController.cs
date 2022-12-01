@@ -21,7 +21,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpGet]
-        [ResponseCache(Duration = 30)]
+        [ResponseCache(CacheProfileName = "Default30")]
         [ProducesResponseType(200)]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
@@ -46,7 +46,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
 
         [HttpGet("{id:int}", Name = "GetVilla")]
-        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(CacheProfileName = "Default30")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

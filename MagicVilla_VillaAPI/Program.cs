@@ -61,8 +61,12 @@ builder.Services.AddAuthentication(x =>
         };
     });
 
-builder.Services.AddControllers(option => {
-    //option.ReturnHttpNotAcceptable = true;
+builder.Services.AddControllers(options => {
+    options.CacheProfiles.Add("Default30",
+        new CacheProfile()
+        {
+            Duration = 30,
+        });
     }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
